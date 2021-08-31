@@ -21,8 +21,26 @@ public class BaseResponse<T> {
     private int code;
     private T data;
 
+    public static <T> BaseResponse<T> isSuccess(T data){
+        return BaseResponse.<T>builder().data(data).code(ResultCode.SUCCESS_CODE.code).msg(ResultCode.SUCCESS_CODE.msg).build();
+    }
+
+    public static <T> BaseResponse<T> isSuccess(T data,String msg){
+        return BaseResponse.<T>builder().data(data).code(ResultCode.SUCCESS_CODE.code).msg(msg).build();
+    }
+
+    public static <T> BaseResponse<T> isFail(T data){
+        return BaseResponse.<T>builder().data(data).code(ResultCode.FAIL_CODE.code).msg(ResultCode.FAIL_CODE.msg).build();
+    }
 
 
+    public static <T> BaseResponse<T> isFail(T data,String msg){
+        return BaseResponse.<T>builder().data(data).code(ResultCode.FAIL_CODE.code).msg(msg).build();
+    }
+
+    public static <T> BaseResponse<T> isFail(T data,int code,String msg){
+        return BaseResponse.<T>builder().data(data).code(code).msg(msg).build();
+    }
 
 
 }
